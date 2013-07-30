@@ -74,6 +74,7 @@ def extract_jpgs(pcap, output):
     
 def get_md5(filename):
     """
+    Returns a hash of the file provided
     http://stackoverflow.com/questions/1131220/get-md5-hash-of-big-files-in-python
     """
     f = open(filename)
@@ -85,6 +86,9 @@ def get_md5(filename):
     return md5.hexdigest()
         
 def initdb(database):
+    """
+    Initializes the database and table
+    """
     conn = sqlite3.connect(database)
     
     conn.execute("DROP TABLE IF EXISTS results")
@@ -97,6 +101,9 @@ def initdb(database):
     return conn
         
 def insert_record(conn, filename, md5, exif):
+    """
+    Inserts a record into the database
+    """
     conn.execute("INSERT INTO results (filename, md5, exif) \
                   VALUES(?, ?, ?)", (filename, md5, exif))
     conn.commit()
