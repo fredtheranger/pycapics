@@ -215,7 +215,7 @@ def main():
         insert_record(conn, os.path.basename(fname), md5hash, simplejson.dumps(exif))
         
         ### WRITE GPS INFO TO KML ###
-        if hasattr(exif, "GPSInfo"):
+        if exif["GPSInfo"]:
             latitude, longitude = get_lat_long(exif['GPSInfo'])
             print "[+] Writing GPS info (%s, %s) to KML for %s" % (longitude, latitude, os.path.basename(fname))
             descr = '%s, %s' % ( longitude, latitude )
