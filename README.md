@@ -13,3 +13,6 @@ Usage
 
 - python pycapics.py [options] <pcap file> 
 
+Misc
+
+- Tested on Ubuntu 12.04 and Python 2.7
